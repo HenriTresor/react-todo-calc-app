@@ -48,7 +48,7 @@ const keys = [
     variant: "contained",
   },
   {
-    text: "X",
+    text: "*",
     variant: "contained",
   },
   {

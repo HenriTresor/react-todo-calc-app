@@ -1,11 +1,32 @@
 import { Container, TextField, Box, Grid } from '@mui/material'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Button from './Button'
 import keys from '../data/keys'
 
 const Calculator = () => {
 
   let [inputValue, setInputValue] = useState("")
+
+  useEffect(() => {
+    window.addEventListener('keydown', (e) => {
+      if (e.key === "Enter") {
+        try {
+           console.log(inputValue);
+           setInputValue(eval(inputValue).toString())
+         } catch (err) {
+          setInputValue("Err")
+         }
+      }
+    })
+
+    return () => {
+      window.removeEventListener('keydown', (e) => {
+        if (e.key == "Enter") {
+          setInputValue(eval(inputValue).toString())
+        }
+      })
+    }
+  },[inputValue])
 
   const handleCal = (text) => {
     if (text === '=') {
@@ -30,8 +51,18 @@ const Calculator = () => {
         fullWidth
         label="calculate"
         variant='outlined'
-        onChange= { ()=>setInputValue(inputValue) }
+        onChange={(e) => {
+          setInputValue(inputValue)
+        } }
         value={inputValue}
+        onKeyDown={(e) => {
+          if (e.key == "Enter") {
+            try {
+              setInputValue(eval(inputValue).toString())
+            } catch (err) {
+              setInputValue("Error")
+            }
+        }}}
       />
 
       <Container sx={{marginTop:3}}>

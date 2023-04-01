@@ -13,6 +13,7 @@ const Header = () => {
     localStorage.setItem('taskList', JSON.stringify(taskList));
   }, [taskList]);
 
+
   
   const addTask = () => {
 
@@ -59,9 +60,12 @@ const Header = () => {
           variant="outlined"
           type="text"
           inputRef={inputRef}
+          onKeyDown={(e)=>{if (e.key == "Enter"){addTask()}}}
         />
         {isError ? <Alert severity="error">Please Enter a Value</Alert> : null}
-        <Button variant="contained" onClick={addTask} startIcon={<Add />}>
+        <Button variant="contained" onClick={(e) => { 
+          addTask()
+        }} startIcon={<Add />}>
           Add
         </Button>
       </Card>
