@@ -1,0 +1,7 @@
+*{
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Roboto;
+  scroll-behavior: smooth;
+}
