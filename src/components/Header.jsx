@@ -78,8 +78,6 @@ const Header = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    background: isTaskDone ? "green" : "white",
-                    color: !isTaskDone ? "black" : "white"
                   }}  
 
                 >
@@ -97,7 +95,7 @@ const Header = () => {
                     <Button>
                       <Edit>Edit</Edit>
                     </Button>
-                    <Button onClick={(id)=>checkDone(task.id)}>
+                    <Button onClick={()=>checkDone(task.id)}>
                       <Done>Done</Done>
                     </Button>
                       </Box>
